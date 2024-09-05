@@ -14,14 +14,12 @@ public class WebSecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.csrf().disable()
-            .authorizeHttpRequests()
-            .antMatchers("/api/usuarios/**").hasRole("ADMIN")
-            .anyRequest().authenticated()
-            .and()
-            .formLogin().permitAll()
-            .and()
-            .logout().permitAll();
+        http.csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(requests -> requests
+                        .requestMatchers("/api/usuarios/**").hasRole("ADMIN") 
+                        .anyRequest().authenticated())
+                .formLogin(login -> login.permitAll())
+                .logout(logout -> logout.permitAll());
 
         return http.build();
     }
