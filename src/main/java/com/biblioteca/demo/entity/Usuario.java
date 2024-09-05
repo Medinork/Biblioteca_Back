@@ -7,7 +7,8 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Entity
-@Data // Ja faz os getter, setters e construtores com todos os atributos e sem os atributos automaticamente
+@Data // Ja faz os getter, setters e construtores com todos os atributos e sem os
+      // atributos automaticamente
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
