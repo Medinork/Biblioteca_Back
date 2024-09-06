@@ -16,7 +16,9 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/api/usuarios/**").hasRole("ADMIN") 
+                        .requestMatchers("api/livros/**").permitAll()
+                        .requestMatchers("api/usuarios/**").permitAll()
+                        // .requestMatchers("/api/usuarios/**").hasRole("ADMIN") 
                         .anyRequest().authenticated())
                 .formLogin(login -> login.permitAll())
                 .logout(logout -> logout.permitAll());
