@@ -1,7 +1,6 @@
 {
   "dependencies": {
     "jsonwebtoken": "^9.0.2",
-    "mvn": "^3.5.0",
-    "type": "module"
+    "mvn": "^3.5.0"
   }
 }
