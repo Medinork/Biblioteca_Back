@@ -29,6 +29,7 @@ public class LivroController {
 
     @PostMapping
     public Livro createLivro(@RequestBody Livro livro) {
+        System.out.println("Recebido o livro: " + livro.getTitulo());
         return livroService.save(livro);
     }
 

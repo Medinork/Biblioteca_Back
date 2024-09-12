@@ -16,8 +16,10 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(requests -> requests
-                        .requestMatchers("/api/usuarios/**").hasRole("ADMIN")
-                        .anyRequest().authenticated())
+                        .requestMatchers("/api/livros/**").permitAll() // Permite acesso público ao endpoint de livros
+                        .requestMatchers("/api/usuarios/**").hasRole("ADMIN")) // Exige a role ADMIN para /api/usuarios
+                // .anyRequest().authenticated()) // Qualquer outra requisição exige
+                // autenticação
                 .formLogin(login -> login.permitAll())
                 .logout(logout -> logout.permitAll());
 
