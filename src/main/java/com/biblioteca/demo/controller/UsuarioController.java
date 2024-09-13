@@ -56,7 +56,7 @@ public class UsuarioController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity login(@RequestBody RegisterDTO data){
+    public ResponseEntity register(@RequestBody RegisterDTO data){
         if(usuarioService.loadUserByUsername(data.email()) != null) return ResponseEntity.badRequest().build();
 
         String encryptedPassword = new BCryptPasswordEncoder().encode(data.password());
